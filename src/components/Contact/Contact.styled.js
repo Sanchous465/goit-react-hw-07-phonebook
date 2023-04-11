@@ -17,7 +17,10 @@ export const Item = styled.li`
 `;
 
 export const Button = styled.button`
+    display: flex;
+    justify-content: center;
     padding: 5px 7px;
+    min-width: 70px;
     color: white;
     background-color: blue;
     cursor: pointer;
@@ -29,6 +32,11 @@ export const Button = styled.button`
     &:hover,
     &:focus {
         transform: scale(1.1);
-        background-color: orange; 
+        background-color: orange;
+     
     }
+    /* &:active {
+        justify-content: space-between;
+        align-items: center;
+    } */
 `

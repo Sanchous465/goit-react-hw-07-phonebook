@@ -1,17 +1,20 @@
 import { useDispatch } from "react-redux";
-import { addContact } from "redux/contactsSlice";
+// import { addContact } from "redux/contactsSlice";
+import { addContact } from "redux/operations";
+// import { getContacts } from "redux/selectors";
 // import { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { FormContainer, Label, Input, Btn } from './Form.styled';
 
-export const Form = ({submit}) => {
+export const Form = () => {
     const dispatch = useDispatch();
-    // const [name, setName] = useState('');
-    // const [number, setNumber] = useState('');
     const formSubmit = event => {
       event.preventDefault();
       const form = event.target;
-      console.log(form.elements.number.value);
+      // console.log(contacts);
+      // console.log(form.name.value);
+      // contacts.some(contact => {
+      //   contact.name === form.name.value ? alert(`oopps`)})
       dispatch(addContact({
         name: form.elements.name.value,
         number: form.elements.number.value
@@ -19,31 +22,6 @@ export const Form = ({submit}) => {
       form.reset()
     };
   
-  // const handleChange = e => {
-  //       const { name, value } = e.currentTarget;
-  //       switch (name) {
-  //         case 'name':
-  //           setName(value)    
-  //           break;
-  //           case 'number':
-  //           setNumber(value)    
-  //             break;  
-  //         default:
-  //           break;
-  //       }
-  //     }
-  // const handleSubmit = e => {
-  //       e.preventDefault();
-  //       submit({
-  //         name, 
-  //         number
-  //       })
-  //       reset()
-  //       }
-  //  const reset = () => {
-  //   setName('')
-  //   setNumber('')    
-  //     }
         return (
             <div>
               <FormContainer onSubmit={formSubmit}>
@@ -75,6 +53,3 @@ export const Form = ({submit}) => {
           );
     
 }
-// Form.propTypes = {
-//     submit: PropTypes.func.isRequired
-// }
