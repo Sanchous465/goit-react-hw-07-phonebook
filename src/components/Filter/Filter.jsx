@@ -1,20 +1,20 @@
-import { FilterContainer } from "./Filter.styled";
-import { Label, Input } from "components/Form/Form.styled";
-import { useDispatch } from "react-redux";
-import { setStatusFilter } from "redux/contactsFilter";
+import { Input } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { contactsFilter } from 'redux/filterSlice';
+import { selectFilters } from 'redux/selectors';
 
 export const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(selectFilters);
 
-    const dispatch = useDispatch(); 
-    const filterInput = e => {
-      const { value } = e.currentTarget;
-      dispatch(setStatusFilter(value))
-    }
-    return (
-        <FilterContainer>
-        <Label>Find Contacts By Name
-        <Input type="text" onChange={filterInput}/>
-        </Label>
-        </FilterContainer>
-    )
-}
+  const filterContact = e => {
+    dispatch(contactsFilter(e.currentTarget.value));
+  };
+
+  return (
+    <label>
+      Filter
+      <Input type="text" onChange={filterContact} value={filter} />
+    </label>
+  );
+};
